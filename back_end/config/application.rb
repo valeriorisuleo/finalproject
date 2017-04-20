@@ -33,5 +33,8 @@ module Finalproject
         resource '*', headers: :any, methods: :any
       end
     end
+
+# This means when Rails starts, it will load this class so that other parts of the application that might make reference to it can know that it exists.
+    config.eager_load_paths << Rails.root.join('lib')
   end
 end

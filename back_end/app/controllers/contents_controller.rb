@@ -3,7 +3,9 @@ class ContentsController < ApplicationController
 
   # GET /contents
   def index
+
     @contents = Content.all
+    # where("post_id=?", @post.id)
 
     render json: @contents
   end
@@ -16,6 +18,7 @@ class ContentsController < ApplicationController
   # POST /contents
   def create
     @content = Content.new(content_params)
+    @content.user = current_user
 
     if @content.save
       render json: @content, status: :created, location: @content
@@ -46,6 +49,6 @@ class ContentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def content_params
-      params.require(:content).permit(:post_id, :user_id, :body, :language)
+      params.require(:content).permit(:post_id, :user_id, :body, :language, :title)
     end
 end

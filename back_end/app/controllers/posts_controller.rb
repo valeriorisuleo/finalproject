@@ -1,5 +1,11 @@
 class PostsController < ApplicationController
+
+  # This is a method that runs before any other controller action.
   before_action :set_post, only: [:show, :update, :destroy]
+
+  # It checks if there is a valid user
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
 
   # GET /posts
   def index
@@ -17,6 +23,16 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
+    @post.user = current_user
+  #///////////////////////////////////////////
+    @content = Content.new(content_params)
+    @content.post = @post
+    @content.user = current_user
+
+    unless @content.save
+      render json: @content.errors, status: :unprocessable_entity
+    end
+#///////////////////////////////////////////
     if @post.save
       render json: @post, status: :created, location: @post
     else
@@ -46,6 +62,9 @@ class PostsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def post_params
-      params.require(:post).permit(:user_id, :title, :image)
+      params.require(:post).permit(:image)
+    end
+    def content_params
+      params.permit(:title, :body, :language)
     end
 end
