@@ -26,5 +26,15 @@ module Finalproject
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins ['localhost:7000']
+        resource '*', headers: :any, methods: :any
+      end
+    end
+
+# This means when Rails starts, it will load this class so that other parts of the application that might make reference to it can know that it exists.
+    config.eager_load_paths << Rails.root.join('lib')
   end
 end
