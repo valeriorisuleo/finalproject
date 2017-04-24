@@ -28,7 +28,7 @@ green.posts.create!(
 
 kiddo.contents.create!([{
   title: "Chapter 3 The man from Okinawa",
-  body: "Do you know what this is? It’s the world’s smallest violin playing just for the waitresses.",
+  body: "Beatrice si rivolge a Dante e, chiamandolo per nome, lo invita a non piangere ancora per la dipartita di Virgilio, in quanto dovrà versare altre lacrime per altri motivi. La donna è simile a un ammiraglio che percorre il ponte per osservare le altre navi, volta sul fianco sinistro del carro: Dante la guarda e vede che fissa i suoi occhi su di lui, nonostante sia ancora coperta dal velo. Beatrice ha un atteggiamento duro e intransigente ed esorta Dante a guardarla bene, rivelando il proprio nome e accusando il poeta di aver osato accedere al Paradiso Terrestre dove l'uomo è felice. Dante abbassa lo sguardo verso le acque del Lete, ma poiché si vede riflesso in esse e si vergogna, volge gli occhi all'erba. Beatrice gli sembra tanto severa quanto lo è la madre che rimprovera aspramente il figlio.",
   language: "en",
   post_id: 1
 },{

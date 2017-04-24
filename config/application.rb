@@ -29,7 +29,7 @@ module Finalproject
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins ['localhost:7000']
+        origins ['localhost:7000', 'https://git.heroku.com/nameless-ravine-79399.git']
         resource '*', headers: :any, methods: :any
       end
     end

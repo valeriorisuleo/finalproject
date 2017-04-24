@@ -29,6 +29,7 @@ class ContentsController < ApplicationController
 
   # PATCH/PUT /contents/1
   def update
+    @content.user_id = current_user.id
     if @content.update(content_params)
       render json: @content
     else

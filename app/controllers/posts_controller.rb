@@ -21,11 +21,12 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(Uploader.upload(post_params))
 
     @post.user = current_user
   #///////////////////////////////////////////
     @content = Content.new(content_params)
+    p @content
     @content.post = @post
     @content.user = current_user
 
@@ -42,7 +43,7 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1
   def update
-    if @post.update(post_params)
+    if @post.update(Uploader.upload(post_params))
       render json: @post
     else
       render json: @post.errors, status: :unprocessable_entity
@@ -62,9 +63,9 @@ class PostsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def post_params
-      params.require(:post).permit(:image)
+      params.require(:post).permit(:base64)
     end
     def content_params
-      params.permit(:title, :body, :language)
+      params.require(:post).permit(:title, {body: []}, :language)
     end
 end

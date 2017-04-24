@@ -28,6 +28,13 @@ gem 'rack-cors'
 gem 'active_model_serializers'
 gem 'httparty'
 
+gem 'carrierwave'
+gem 'carrierwave-base64'
+# This will handle uploading to AWS
+gem 'fog-aws'
+
+gem 'redcarpet', '~> 2.3.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
